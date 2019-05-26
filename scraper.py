@@ -70,8 +70,7 @@ def import_txt_file(path_extracted_file):
             'DT_INI_ATIV': row['DT_INI_ATIV'],
             'DT_CONST': row['DT_CONST']
         }
-        print(data)
-        print(scraperwiki.sqlite.save(unique_keys=['CD_CVM'], data=data))
+        scraperwiki.sqlite.save(unique_keys=['CD_CVM'], data=data)
 
 
 def process_import(file_name_server, file_name_extracted):
@@ -116,7 +115,7 @@ def main():
     # fundos 409 cancelados
     file_name_server = 'SPW_FI_CANCELADOS.ZIP'
     file_name_extracted = 'SPW_FI_CANCELADOS.txt'
-    process_import(file_name_server, file_name_extracted)
+    #process_import(file_name_server, file_name_extracted)
 
 
 if __name__ == '__main__':
