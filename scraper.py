@@ -48,6 +48,10 @@ def import_txt_file(path_extracted_file):
     print('Importing {} items'.format(len(df)))
 
     for index, row in df.iterrows():
+        # a indicator for n imported items
+        if index % 1000:
+            print('Imported 1000 items...')
+
         data = {
             'CNPJ': row['CNPJ'],
             'DT_REG': row['DT_REG'],
@@ -115,7 +119,7 @@ def main():
     # fundos 409 cancelados
     file_name_server = 'SPW_FI_CANCELADOS.ZIP'
     file_name_extracted = 'SPW_FI_CANCELADOS.txt'
-    #process_import(file_name_server, file_name_extracted)
+    process_import(file_name_server, file_name_extracted)
 
 
 if __name__ == '__main__':
