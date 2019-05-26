@@ -71,7 +71,7 @@ def import_txt_file(path_extracted_file):
             'DT_CONST': row['DT_CONST']
         }
         print(data)
-        scraperwiki.sqlite.save(unique_keys=['CD_CVM'], data=data)
+        print(scraperwiki.sqlite.save(unique_keys=['CD_CVM'], data=data))
 
 
 def process_import(file_name_server, file_name_extracted):
