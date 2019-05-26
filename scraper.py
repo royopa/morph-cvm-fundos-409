@@ -70,8 +70,8 @@ def import_txt_file(path_extracted_file):
             'DT_INI_ATIV': row['DT_INI_ATIV'],
             'DT_CONST': row['DT_CONST']
         }
-
-        scraperwiki.sqlite.save(unique_keys=['CNPJ', 'CD_CVM'], data=data)
+        print(data)
+        scraperwiki.sqlite.save(unique_keys=['CD_CVM'], data=data)
 
 
 def process_import(file_name_server, file_name_extracted):
