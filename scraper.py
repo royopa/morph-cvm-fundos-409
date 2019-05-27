@@ -49,7 +49,7 @@ def import_txt_file(path_extracted_file):
 
     for index, row in df.iterrows():
         # a indicator for n imported items
-        if index % 1000:
+        if index % 1000 == 0:
             print('Imported 1000 items...')
 
         data = {
