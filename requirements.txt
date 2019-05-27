@@ -1,5 +1,5 @@
 scraperwiki
 lxml
 cssselect
-requests-html
+requests
 pandas
