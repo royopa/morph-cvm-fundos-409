@@ -107,7 +107,7 @@ def process_import(file_name_server, file_name_extracted):
 
 def main():
     # format the name of database used for morph.io
-    os.environ['SCRAPERWIKI_DATABASE_NAME'] = 'sqlite:///data.sqlite'
+    # os.environ['SCRAPERWIKI_DATABASE_NAME'] = 'sqlite:///data.sqlite'
     
     # create download folder
     create_download_folder()
