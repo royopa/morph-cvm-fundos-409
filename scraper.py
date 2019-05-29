@@ -54,8 +54,11 @@ def import_txt_file(path_extracted_file):
         if index % 1000 == 0:
             print('Imported 1000 items...')
 
-        pk_partic = get_pk_partic_cvm(row['CNPJ'])
-        time.sleep(0.5)
+        try:
+            pk_partic = get_pk_partic_cvm(row['CNPJ'])
+            time.sleep(0.5)
+        except Exception:
+            pk_partic = 0
 
         data = {
             'CNPJ': row['CNPJ'],
