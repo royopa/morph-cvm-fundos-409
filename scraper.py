@@ -6,6 +6,7 @@ import os
 from zipfile import ZipFile
 import pandas as pd
 import scraperwiki
+import time
 
 
 def download_file(url, file_name):
@@ -53,8 +54,12 @@ def import_txt_file(path_extracted_file):
         if index % 1000 == 0:
             print('Imported 1000 items...')
 
+        pk_partic = get_pk_partic_cvm(row['CNPJ'])
+        time.sleep(0.5)
+
         data = {
             'CNPJ': row['CNPJ'],
+            'PK_PARTIC': pk_partic,
             'DT_REG': row['DT_REG'],
             'CD_CVM': row['CD_CVM'],
             'VL_PATRIM_LIQ': row['VL_PATRIM_LIQ'],
@@ -75,7 +80,7 @@ def import_txt_file(path_extracted_file):
             'DT_INI_ATIV': row['DT_INI_ATIV'],
             'DT_CONST': row['DT_CONST']
         }
-        scraperwiki.sqlite.save(unique_keys=['CD_CVM'], data=data)
+        scraperwiki.sqlite.save(unique_keys=['CNPJ'], data=data)
 
 
 def process_import(file_name_server, file_name_extracted):
@@ -103,6 +108,13 @@ def process_import(file_name_server, file_name_extracted):
     # remove files alread used
     os.remove(path_zip_file)
     os.remove(path_extracted_file)
+
+
+def get_pk_partic_cvm(cnpj):
+    url = 'http://cvmweb.cvm.gov.br/SWB/Sistemas/SCW/CPublica/ResultBuscaPartic.aspx?TpConsulta=2&CNPJNome={}'.format(cnpj)
+    response = requests.get(url)
+    pk_partic = int(response.url.split('PK_PARTIC=')[1].split('&COMPTC=')[0])
+    return pk_partic
 
 
 def main():
