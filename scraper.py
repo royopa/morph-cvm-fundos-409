@@ -25,7 +25,7 @@ def create_download_folder():
         # Create target Directory
         os.mkdir(dirName)
         print("Directory", dirName, "Created ")
-    except FileExistsError:
+    except Exception:
         print("Directory", dirName, "already exists")
     
     
