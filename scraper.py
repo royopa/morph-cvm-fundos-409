@@ -121,20 +121,12 @@ def get_pk_partic_cvm(cnpj):
 
 
 def main():
-    # format the name of database used for morph.io
-    # os.environ['SCRAPERWIKI_DATABASE_NAME'] = 'sqlite:///data.sqlite'
-    
     # create download folder
     create_download_folder()
 
     # fundos 409 ativos
     file_name_server = 'SPW_FI.ZIP'
     file_name_extracted = 'SPW_FI.txt'
-    process_import(file_name_server, file_name_extracted)
-
-    # fundos 409 cancelados
-    file_name_server = 'SPW_FI_CANCELADOS.ZIP'
-    file_name_extracted = 'SPW_FI_CANCELADOS.txt'
     process_import(file_name_server, file_name_extracted)
 
 
